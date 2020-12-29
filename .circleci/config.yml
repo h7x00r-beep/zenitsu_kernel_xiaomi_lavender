@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  compile:
+   docker:
+      - image: starlight2834/ci_docker:latest
+   steps:
+      - run: apt-get update -y && apt-get install openssh-client git python3 -y
+      - checkout
+      - run: curl https://raw.githubusercontent.com/lavender-retards/Build-Scripts/lavender/build.sh | bash
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - compile
